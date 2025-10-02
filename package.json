@@ -1,0 +1,28 @@
+{
+  "name": "manaofc-api",
+  "version": "1.0.0",
+  "description": "manaofc API Hub - A collection of powerful APIs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "manaofc"
+  ],
+  "author": "manaofc",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "latest",
+    "cheerio": "latest",
+    "cheery": "latest",
+    "express": "latest",
+    "https-proxy-agent": "latest",
+    "path": "latest",
+    "ytdl-core": "latest"
+  },
+  "devDependencies": {
+    "nodemon": "latest"
+  }
+}
