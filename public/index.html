@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thenux API Hub</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Fira Code', monospace;
+        background-color: #1e1e1e;
+        color: #eee;
+        scroll-behavior: smooth;
+    }
 
+    /* Navigation Bar */
+    .navbar {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: #2b2b2b;
+        padding: 10px 20px;
+        border-bottom: 1px solid #333;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .navbar a {
+        color: #00ff99;
+        text-decoration: none;
+        margin-right: 20px;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+
+    .navbar a:hover {
+        color: #00ffaa;
+    }
+
+    /* Sections */
+    section {
+        padding: 40px 20px;
+    }
+
+    #home {
+        text-align: center;
+    }
+
+    #home img {
+        width: 150px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+
+    #home h1 {
+        margin-bottom: 20px;
+    }
+
+    audio {
+        margin-top: 10px;
+        outline: none;
+    }
+
+    /* Contact Section */
+    #contact a {
+        display: inline-block;
+        margin: 10px 20px;
+        color: #00ff99;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.2s;
+    }
+
+    #contact a:hover {
+        color: #00ffaa;
+    }
+
+    /* API Grid */
+    .api-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    .api-card {
+        background-color: #2b2b2b;
+        padding: 15px;
+        border-radius: 8px;
+        flex: 1 1 250px;
+        border: 1px solid #333;
+    }
+
+    .api-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .status-badge {
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 0.8em;
+    }
+
+    .status-badge.active { background-color: #27c93f; color: #fff; }
+    .status-badge.offline { background-color: #f44336; color: #fff; }
+
+    .endpoint {
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
+    }
+
+    .method {
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-right: 8px;
+        font-weight: bold;
+        font-size: 0.8em;
+    }
+
+    .method.get { background-color: #00aaff; color: #fff; }
+    .method.post { background-color: #ffaa00; color: #fff; }
+    .method.offline { background-color: #888; color: #fff; }
+
+    .try-btn {
+        color: #00ff99;
+        text-decoration: none;
+        font-size: 0.9em;
+    }
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <a href="#home">Home</a>
+    <a href="#api">API</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- Home Section -->
+<section id="home">
+    <img src="manaofc.png" alt="Manaofc Logo">
+    <h1>Welcome to Thenux API Hub</h1>
+    <p>Enjoy your music while exploring APIs</p>
+    <audio controls>
+        <source src="musicplay.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</section>
+
+<!-- API Section -->
+<section id="api">
+    <h2>Our APIs</h2>
+    <div class="api-grid">
+        <div class="api-card">
+            <div class="api-header">
+                <h3>Car API</h3>
+                <span class="status-badge active">Online</span>
+            </div>
+            <div class="api-body">
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <a class="try-btn" href="#">/car/search</a>
+                </div>
+                <div class="endpoint">
+                    <span class="method post">POST</span>
+                    <a class="try-btn" href="#">/car/add</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="api-card">
+            <div class="api-header">
+                <h3>Movie API</h3>
+                <span class="status-badge active">Online</span>
+            </div>
+            <div class="api-body">
+                <div class="endpoint">
+                    <span class="method get">GET</span>
+                    <a class="try-btn" href="#">/movie/search</a>
+                </div>
+                <div class="endpoint">
+                    <span class="method offline">OFFLINE</span>
+                    <a class="try-btn" href="#">/movie/download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+    <a href="https://wa.me/yourwhatsappnumber" target="_blank">WhatsApp</a>
+</section>
+
+</body>
+</html>
