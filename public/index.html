@@ -1,684 +1,228 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thenux-API Hub</title>
-    <link rel="stylesheet" href="/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </head>
-    <body>
-    <div class="terminal-bar">
-        <div class="terminal-tabs">
-        <span class="active">bash</span>
-        <span>server.log</span>
-        <span>api-status</span>
-        </div>
-        <div class="terminal-controls">
-        <i class="fas fa-minus"></i>
-        <i class="fas fa-square"></i>
-        <i class="fas fa-times"></i>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manaofc API Hub</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Fira Code", monospace;
+      background: #0d1117;
+      color: #c9d1d9;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background: #161b22;
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #21262d;
+    }
+    nav a {
+      color: #00ffcc;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #ffbd2e;
+    }
+    section { display: none; padding: 30px; }
+    section.active-section { display: block; }
+    .terminal-window {
+      max-width: 850px;
+      margin: 20px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0px 0px 20px #000;
+      background: #161b22;
+    }
+    .terminal-header {
+      background: #21262d;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .btn { width: 12px; height: 12px; border-radius: 50%; margin-right: 8px; }
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+    .title { color: #c9d1d9; font-size: 14px; margin-left: 10px; }
+    .terminal-body { padding: 20px; }
+    .output pre { color: #00ffcc; font-size: 14px; }
+    .music-player, .contact-links { margin-top: 20px; text-align: center; }
+    .contact-links h3 { margin-bottom: 10px; color: #58a6ff; }
+    .contact-links a {
+      color: #00ffcc; margin: 0 10px; text-decoration: none; font-weight: bold; transition: 0.3s;
+    }
+    .contact-links a:hover { color: #ffbd2e; }
+    .api-list ul { list-style: none; padding: 0; }
+    .api-list li { background: #21262d; padding: 10px; margin: 8px 0; border-radius: 8px; }
+    .status-box { background: #21262d; padding: 15px; border-radius: 8px; text-align: center; margin: 10px 0; }
+    .online { color: #27c93f; font-weight: bold; }
+    .offline { color: #ff5f56; font-weight: bold; }
+    /* 🔹 API Try Section */
+    .api-try form { text-align: center; margin-top: 20px; }
+    .api-try select, .api-try input {
+      padding: 10px; margin: 5px; border-radius: 5px; border: none; width: 60%;
+    }
+    .api-try button {
+      padding: 10px 20px; background: #00ffcc; border: none; border-radius: 5px;
+      font-weight: bold; cursor: pointer; transition: 0.3s;
+    }
+    .api-try button:hover { background: #ffbd2e; }
+    .api-result {
+      background: #0d1117; padding: 15px; margin-top: 20px;
+      border: 1px solid #21262d; border-radius: 8px; white-space: pre-wrap;
+      color: #58a6ff;
+    }
+  </style>
+</head>
+<body>
 
-    <header>
-        <div class="logo">
-        <span class="logo-icon">></span>
-        <h1>Thenux-API_</h1>
-        <span class="cursor">|</span>
+  <!-- 🔹 Navigation -->
+  <nav>
+    <a href="#" onclick="showSection('home')">🏠 Home</a>
+    <a href="#" onclick="showSection('apis')">📡 APIs</a>
+    <a href="#" onclick="showSection('tryapi')">⚡ Try API</a>
+    <a href="#" onclick="showSection('status')">🖥 System Status</a>
+    <a href="#" onclick="showSection('contact')">📩 Contact</a>
+  </nav>
+
+  <!-- 🔹 Home -->
+  <section id="home" class="active-section">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="btn red"></div><div class="btn yellow"></div><div class="btn green"></div>
+        <span class="title">welcome.sh</span>
+      </div>
+      <div class="terminal-body">
+        <div class="output">
+          <pre>
+    __  __             _       
+   |  \/  | __ _ _ __ (_) ___  
+   | |\/| |/ _` | '_ \| |/ _ \ 
+   | |  | | (_| | | | | | (_) |
+   |_|  |_|\__,_|_| |_|_|\___/ 
+         Manaofc API Hub
+          </pre>
+          <p>> Manaofc API </p>
+          <p>> A collection of powerful APIs for developers</p>
         </div>
-        <nav>
+        <div class="music-player">
+          <p><i class="fas fa-music"></i> Now Playing</p>
+          <audio controls autoplay loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+          </audio>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 APIs -->
+  <section id="apis">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="btn red"></div><div class="btn yellow"></div><div class="btn green"></div>
+        <span class="title">api-list.sh</span>
+      </div>
+      <div class="terminal-body api-list">
+        <h2>📡 Available APIs</h2>
         <ul>
-            <li><a href="#home" class="active"><i class="fas fa-home"></i> <span>Home</span></a></li>
-            <li><a href="#apis"><i class="fas fa-code"></i> <span>APIs</span></a></li>
-            <li><a href="#docs"><i class="fas fa-book"></i> <span>Docs</span></a></li>
-            <li><a href="#status"><i class="fas fa-server"></i> <span>Status</span></a></li>
+          <li><b>/yt/search?query=</b> → Search YouTube videos</li>
+          <li><b>/yt/download?url=</b> → Download YouTube videos</li>
+          <li><b>/movie/search?name=</b> → Search Movies Database</li>
+          <li><b>/ai-chat?msg=</b> → AI Chat Assistant</li>
+          <li><b>/weather?city=</b> → Get weather info</li>
         </ul>
-        </nav>
-    </header>
+      </div>
+    </div>
+  </section>
 
-    <main>
-        <section id="home" class="active-section">
-        <div class="terminal-window">
-            <div class="terminal-header">
-            <div class="btn red"></div>
-            <div class="btn yellow"></div>
-            <div class="btn green"></div>
-            <span class="title">welcome.sh</span>
-            </div>
-            <div class="terminal-body">
-            <div class="command-line">
-                <span class="prompt">user@thenux-api:~$</span>
-                <span class="command">cat welcome.txt</span>
-            </div>
-            <div class="output">
-                <pre>
-    _______ _   _ _  _  ____ _   _ ___  
-    |__  __| | | | \| |/ __| | | | _ \ 
-        | |  | |_| | .` | (__| |_| |  _/ 
-        |_|   \___/|_|\_|\___|\___/|_|   
-                                        
-                </pre>
-                <p>> Thenux-API v1.0.0</p>
-                <p>> A collection of powerful APIs for developers</p>
-                <p>> Type 'help' for available commands</p>
-            </div>
-            <div class="command-line input-line">
-                <span class="prompt">user@thenux-api:~$</span>
-                <input type="text" placeholder="help" class="command-input">
-            </div>
-            </div>
+  <!-- 🔹 Try API -->
+  <section id="tryapi">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="btn red"></div><div class="btn yellow"></div><div class="btn green"></div>
+        <span class="title">try-api.sh</span>
+      </div>
+      <div class="terminal-body api-try">
+        <h2>⚡ Try API</h2>
+        <form id="apiForm">
+          <select id="endpoint">
+            <option value="/yt/search?query=">/yt/search</option>
+            <option value="/yt/download?url=">/yt/download</option>
+            <option value="/movie-search?name=">/movie-search</option>
+            <option value="/ai-chat?msg=">/ai-chat</option>
+            <option value="/weather?city=">/weather</option>
+          </select><br>
+          <input type="text" id="query" placeholder="Enter query (e.g. car)" required>
+          <button type="submit">Run</button>
+        </form>
+        <div id="result" class="api-result"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 System Status -->
+  <section id="status">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="btn red"></div><div class="btn yellow"></div><div class="btn green"></div>
+        <span class="title">system-status.sh</span>
+      </div>
+      <div class="terminal-body">
+        <h2>🖥 System Status</h2>
+        <div class="status-box">
+          <p>Server: <span class="online">ONLINE</span></p>
+          <p>Database: <span class="online">CONNECTED</span></p>
+          <p>API Uptime: <span class="online">99.98%</span></p>
         </div>
-        </section>
+      </div>
+    </div>
+  </section>
 
-        <section id="apis">
-        <h2><i class="fas fa-code"></i> Available APIs</h2>
-        
-        <div class="api-grid">
-            <!-- Anime API Card -->
-            <div class="api-card">
-            <div class="api-header">
-                <i class="fas fa-film"></i>
-                <h3>Anime API</h3>
-                <span class="status-badge active">Online</span>
-            </div>
-            <div class="api-body">
-                <p>Get random anime images and artwork</p>
-                <div class="endpoints">
-                <div class="endpoint">
-                    <span class="method get">GET</span>
-                    <span class="url">/api/anime/random</span>
-                    <a href="/api/anime/random" target="_blank" class="try-btn">Try</a>
-                </div>
-                <div class="endpoint">
-                    <span class="method get">GET</span>
-                    <span class="url">/api/pexels/anime-girl</span>
-                    <a href="/api/pexels/anime-girl" target="_blank" class="try-btn">Try</a>
-                </div>
-                <div class="endpoint">
-                    <span class="method get">GET</span>
-                    <span class="url">/api/anime/girls</span>
-                    <a href="/api/anime/girls" target="_blank" class="try-btn">Try</a>
-                </div>
-                <div class="endpoint">
-                    <span class="method get">GET</span>
-                    <span class="url">/api/anime/waifu</span>
-                    <a href="/api/anime/waifu" target="_blank" class="try-btn">Try</a>
-                   
-                </div>
-                <div class="endpoint">
-                    <span class="method get">OFFLINE</span>
-                    <span class="url">/api/anime/waifu/</span>
-                    <a href="/api/anime/waifu/json" target="_blank" class="try-btn">Try</a>
-                
-                </div>
-                </div>
-            </div>
-            </div>
-           
-            <!-- Movie API Card -->
-            <div class="api-card">
-            <div class="api-header">
-                <i class="fas fa-video"></i>
-                <h3>Movie API</h3>
-                <span class="status-badge active">Online</span>
-            </div>
-            <div class="api-body">
-                <p>Search and download movie information</p>
-                <div class="endpoints">
-                <div class="endpoint">
-                    <span class="method get">GET</span>
-                    <span class="url">/api/movie/search?q=</span>
-                    <a href="api/movie/searchm?query=spider&limit=" target="_blank" class="try-btn">Try</a>
-                </div>
-                <div class="endpoint">
-                    <span class="method get">GET</span>
-                    <span class="url">/api/movie/download</span>
-                    <a href="/api/movie/download?url=https://sinhalasub.lk/movies/deadpool-wolverine-2024-sinhala-subtitles/" target="_blank" class="try-btn">Try</a>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
+  <!-- 🔹 Contact -->
+  <section id="contact">
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="btn red"></div><div class="btn yellow"></div><div class="btn green"></div>
+        <span class="title">contact.sh</span>
+      </div>
+      <div class="terminal-body contact-links">
+        <h3>📩 Contact Me</h3>
+        <a href="https://github.com/manaofc" target="_blank"><i class="fab fa-github"></i> GitHub</a> |
+        <a href="https://wa.me/94721551183" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a> |
+      </div>
+    </div>
+  </section>
 
-        
-<!-- Add this to your API cards section -->
-<div class="api-grid">
-<div class="api-card">
-    <div class="api-header">
-        <i class="fab fa-youtube"></i>
-        <h3>YouTube MP3</h3>
-        <span class="status-badge active">Online</span>
-    </div>
-    <div class="api-body">
-        <p>Convert YouTube videos to MP3</p>
-        <div class="endpoints">
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/yt/search?query=</span>
-                <a href="/api/yt/search?query=lelena" target="_blank" class="try-btn">Try</a>
-            </div>
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/ytmp3/proxy?url=</span>
-                <a href="/api/ytmp3/proxy?url=https://youtube.com/watch?v=MwpMEbgC7DA" target="_blank" class="try-btn">Try</a>
-                
-            </div>
-        </div>
-    </div>
-</div>
+  <script>
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active-section"));
+      document.getElementById(id).classList.add("active-section");
+    }
 
-            <!-- DL API Card -->
-            <!-- <div class="api-card">
-                <div class="api-header">
-                    <i class="fas fa-download"></i>
-                    <h3>Download API</h3>
-                    <span class="status-badge active">online</span>
-                </div>
-                <div class="api-body">
-                    <p>Download Ig videos</p>
-                    
-                        <div class="endpoint">
-                            <span class="method get">GET</span>
-                            <span class="url">/api/igdl/download</span>
-                            <a href="/api/igdl/download?url=https://www.instagram.com/reel/DD6q97IuzxD/?igsh=YzljYTk1ODg3Zg==" target="_blank" class="try-btn">Try</a>
-                        </div>
-                   </div>
-                    </div>
-                </div>
-                </div>-->
+    // API Try Runner
+    document.getElementById("apiForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      let endpoint = document.getElementById("endpoint").value;
+      let query = document.getElementById("query").value;
+      let url = endpoint + encodeURIComponent(query);
 
-  
-                <!-- Add this inside the api-grid div in the APIs section -->
-                <div class="api-grid">
-<div class="api-card">
-    <div class="api-header">
-        <i class="fas fa-download"></i>
-        <h3>Instagram Downloader</h3>
-        <span class="status-badge active">Online</span>
-    </div>
-    <div class="api-body">
-        <p>Download Instagram videos, reels, and photos</p>
-        <div class="endpoints">
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/igdl/download?url=</span>
-                <a href="/api/igdl/download?url=https://www.instagram.com/reel/DD6q97IuzxD/?igsh=YzljYTk1ODg3Zg==" target="_blank" class="try-btn">Try</a>
-            </div>
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/igstory/download?username=</span>
-                <a href="/api/igstory/download?username=mr_darkwolf1" target="_blank" class="try-btn">Try</a>
-            </div>
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/igstory/proxy?url=</span>
-                <a href="/api/igstory/proxy?url=" target="_blank" class="try-btn">Try</a>
-                
-            </div>
-            <div class="endpoint">
-                <span class="method get">OFFLINE</span>
-                <span class="url">/api/igdl/info?url=</span>
-                <a href="/api/igdl/info?url=https://www.instagram.com/p/C5vYhX2Pz5K/" target="_blank" class="try-btn">Try</a>
-            </div>
-        </div>
-    </div>
-</div>
+      document.getElementById("result").innerText = "Fetching: " + url + " ...";
 
-
-
-<div class="api-card" style="margin-top: 20px;">
-    <div class="api-header">
-        <i class="fas fa-robot"></i>
-        <h3>Gemini AI</h3>
-        <span class="status-badge active">Online</span>
-    </div>
-    <div class="api-body">
-        <p>Gemini AI</p>
-        <div class="endpoints">
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/gemini/analyze?url=</span>
-                <a href="/api/gemini/analyze?url=https://i.pinimg.com/564x/b8/a8/e2/b8a8e281f1a3113630671742b5677c15.jpg&q=who%20is%20this" target="_blank" class="try-btn">Try</a>
-            </div>
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/gemini/ai?q=Hi</span>
-                <a href="/api/gemini/ai?q=Hi" target="_blank" class="try-btn">Try</a>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-<!-- Amazon Price Tracker Card -->
-<div class="api-card">
-    <div class="api-header">
-        <i class="fab fa-amazon"></i>
-        <h3>Amazon Price Tracker</h3>
-        <span class="status-badge active">Online</span>
-    </div>
-    <div class="api-body">
-        <p>Get product prices from Amazon</p>
-        <div class="endpoints">
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/amazon/price?url=</span>
-                <a href="/api/amazon/price?url=https://www.amazon.com/dp/B08N5KWB9H" target="_blank" class="try-btn">Try</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Weather API Card -->
-<div class="api-card">
-    <div class="api-header">
-        <i class="fas fa-cloud-sun"></i>
-        <h3>Weather API</h3>
-        <span class="status-badge active">Online</span>
-    </div>
-    <div class="api-body">
-        <p>Get current weather data</p>
-        <div class="endpoints">
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/weather?city=</span>
-                <a href="/api/weather?city=Tokyo" target="_blank" class="try-btn">Try</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Job Search API Card -->
-<div class="api-card">
-    <div class="api-header">
-        <i class="fas fa-briefcase"></i>
-        <h3>Job Search</h3>
-        <span class="status-badge inactive">OFLINE</span>
-    </div>
-    <div class="api-body">
-        <p>Search job listings from Indeed</p>
-        <div class="endpoints">
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/jobs/search?q=</span>
-                <a href="/api/jobs/search?q=frontend+developer" target="_blank" class="try-btn-in">Try</a>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="api-card">
-    <div class="api-header">
-        <i class="fas fa-film"></i>
-        <h3>Anime Info API</h3>
-        <span class="status-badge active">Online</span>
-    </div>
-    <div class="api-body">
-        <p>Get detailed anime information from MyAnimeList</p>
-        <div class="endpoints">
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/anime/search?q=</span>
-                <a href="/api/anime/search?q=Attack+on+Titan" target="_blank" class="try-btn">Try</a>
-            </div>
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/anime/info/:id</span>
-                <a href="/api/anime/info/16498" target="_blank" class="try-btn">Try</a>
-              
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Manga Scraper API Card -->
-<div class="api-card">
-    <div class="api-header">
-        <i class="fas fa-book"></i>
-        <h3>Manga Scraper</h3>
-        <span class="status-badge active">Online</span>
-    </div>
-    <div class="api-body">
-        <p>Read manga chapters from MangaDex</p>
-        <div class="endpoints">
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/manga/read?id=</span>
-                <a href="/api/manga/read?id=onepiece-chapter-1100" target="_blank" class="try-btn">Try</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Netflix Scraper API Card -->
-<div class="api-card">
-    <div class="api-header">
-        <i class="fab fa-television"></i>
-        <h3>Netflix Scraper</h3>
-        <span class="status-badge active">Online</span>
-    </div>
-    <div class="api-body">
-        <p>Get trending shows on Netflix</p>
-        <div class="endpoints">
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/netflix/trending</span>
-                <a href="/api/netflix/trending" target="_blank" class="try-btn">Try</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Disney+ Scraper API Card -->
-<div class="api-card">
-    <div class="api-header">
-        <i class="fab  fa-question-circle-o"></i>
-        <h3>Disney+ Scraper</h3>
-        <span class="status-badge active">Online</span>
-    </div>
-    <div class="api-body">
-        <p>Get trending shows on Disney+</p>
-        <div class="endpoints">
-            <div class="endpoint">
-                <span class="method get">GET</span>
-                <span class="url">/api/disney/trending</span>
-                <a href="/api/disney/trending" target="_blank" class="try-btn">Try</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-        </section>
-
-        
-    
-        <section id="status">
-            <h2><i class="fas fa-heartbeat"></i> System Status</h2>
-            <div class="status-container">
-            <div class="status-grid">
-                <!-- Battery Status -->
-                <div class="status-card" id="battery-card">
-                <div class="status-title">
-                    <i class="fas fa-battery-full"></i>
-                    Battery Status
-                </div>
-                <div id="battery-status" class="status-value">Checking...</div>
-                </div>
-                
-                <!-- Location Info -->
-                <div class="status-card">
-                <div class="status-title">
-                    <i class="fas fa-map-marker-alt"></i>
-                    Approximate Location
-                </div>
-                <div id="location-info" class="status-value">
-                    <div>City: <span id="city">Detecting...</span></div>
-                    <div>Region: <span id="region">-</span></div>
-                    <div>Country: <span id="country">-</span></div>
-                </div>
-                </div>
-                
-                <!-- Network Info -->
-                <div class="status-card">
-                <div class="status-title">
-                    <i class="fas fa-network-wired"></i>
-                    Network
-                </div>
-                <div id="network-info" class="status-value">
-                    <div>IP: <span id="ip-address">-</span></div>
-                    <div>Status: <span id="connection-status">-</span></div>
-                    <div>ISP: <span id="isp-info">-</span></div>
-                </div>
-                </div>
-                
-                <!-- System Info -->
-                <div class="status-card">
-                <div class="status-title">
-                    <i class="fas fa-desktop"></i>
-                    System
-                </div>
-                <div id="system-info" class="status-value">
-                    <div>Browser: <span id="browser-name">-</span></div>
-                    <div>Platform: <span id="platform">-</span></div>
-                    <div>Screen: <span id="screen-res">-</span></div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </section>
-
-        <section id="docs">
-        <h2><i class="fas fa-book"></i> Documentation</h2>
-        <div class="docs-container">
-            <div class="tabs">
-            <button class="tab-btn active" data-tab="anime">Anime API</button>
-            <button class="tab-btn" data-tab="movie">Movie API</button>
-            <button class="tab-btn" data-tab="search">Search API</button>
-            </div>
-            
-            <div class="tab-content active" id="anime-tab">
-            <h3>Anime API Documentation</h3>
-            <div class="code-block">
-                <pre><code class="javascript">
-    // Fetch random anime image
-    fetch('/api/anime/random')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.image_url);
+      try {
+        let res = await fetch(url);
+        let data = await res.text();
+        document.getElementById("result").innerText = data;
+      } catch (err) {
+        document.getElementById("result").innerText = "❌ Error: " + err.message;
+      }
     });
-                </code></pre>
-            </div>
-            </div>
-            
-            <div class="tab-content" id="movie-tab">
-            <h3>Movie API Documentation</h3>
-            <div class="code-block">
-                <pre><code class="javascript">
-    // Fetch movie download links
-    fetch('/api/download-links?url=movie-url')
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.downloadOptions);
-    });
-                </code></pre>
-                
-                    </div>
-                    </div>
-                </section>
-                
-            </div>
-            </div>
-        </div>
-        </section>
-    </main>
+  </script>
 
-    <footer>
-        <div class="footer-content">
-        <div class="social-links">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-discord"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-        </div>
-        <p>© 2023 Thenux-API | Made with <i class="fas fa-heart"></i> for developers</p>
-        </div>
-    </footer>
-
-    <script>
-        // Tab functionality
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all buttons and content
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            
-            // Add active class to clicked button and corresponding content
-            btn.classList.add('active');
-            const tabId = btn.getAttribute('data-tab') + '-tab';
-            document.getElementById(tabId).classList.add('active');
-        });
-        });
-
-        // Navigation functionality
-        document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            // Remove active class from all links and sections
-            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-            document.querySelectorAll('section').forEach(s => s.classList.remove('active-section'));
-            
-            // Add active class to clicked link and corresponding section
-            link.classList.add('active');
-            const sectionId = link.getAttribute('href').substring(1);
-            document.getElementById(sectionId).classList.add('active-section');
-        });
-        });
-
-        // Terminal typing effect
-        const commands = ['help', 'api status', 'docs --open'];
-        let commandIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const commandInput = document.querySelector('.command-input');
-
-        function typeCommand() {
-        const currentCommand = commands[commandIndex];
-        
-        if (isDeleting) {
-            commandInput.placeholder = currentCommand.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            commandInput.placeholder = currentCommand.substring(0, charIndex + 1);
-            charIndex++;
-        }
-
-        if (!isDeleting && charIndex === currentCommand.length) {
-            isDeleting = true;
-            setTimeout(typeCommand, 1000);
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            commandIndex = (commandIndex + 1) % commands.length;
-            setTimeout(typeCommand, 500);
-        } else {
-            setTimeout(typeCommand, isDeleting ? 50 : 100);
-        }
-        }
-
-        // Start typing effect
-        setTimeout(typeCommand, 1000);
-        
-
-        document.addEventListener('DOMContentLoaded', function() {
-        // 1. Battery Status
-        function initBattery() {
-            if ('getBattery' in navigator) {
-            navigator.getBattery().then(battery => {
-                function updateBattery() {
-                const percent = Math.round(battery.level * 100);
-                const batteryElement = document.getElementById('battery-status');
-                const icon = document.querySelector('#battery-card .fa');
-                
-                // Update icon based on level
-                if (percent >= 90) icon.className = 'fas fa-battery-full';
-                else if (percent >= 60) icon.className = 'fas fa-battery-three-quarters';
-                else if (percent >= 30) icon.className = 'fas fa-battery-half';
-                else if (percent >= 10) icon.className = 'fas fa-battery-quarter';
-                else icon.className = 'fas fa-battery-empty';
-                
-                // Set text and color
-                batteryElement.textContent = `${percent}%${battery.charging ? ' (Charging)' : ''}`;
-                
-                if (percent <= 10) {
-                    batteryElement.className = 'status-value battery-critical';
-                } else if (percent <= 30) {
-                    batteryElement.className = 'status-value battery-low';
-                } else if (percent <= 70) {
-                    batteryElement.className = 'status-value battery-medium';
-                } else if (percent < 100) {
-                    batteryElement.className = 'status-value battery-high';
-                } else {
-                    batteryElement.className = 'status-value battery-full';
-                }
-                }
-                
-                battery.addEventListener('levelchange', updateBattery);
-                battery.addEventListener('chargingchange', updateBattery);
-                updateBattery();
-            }).catch(() => {
-                document.getElementById('battery-card').style.display = 'none';
-            });
-            } else {
-            document.getElementById('battery-card').style.display = 'none';
-            }
-        }
-        
-        // 2. Location and Network Info
-        function initLocationAndNetwork() {
-            // First get IP address
-            fetch('https://api.ipify.org?format=json')
-            .then(r => r.json())
-            .then(ipData => {
-                document.getElementById('ip-address').textContent = ipData.ip;
-                
-                // Then get location details using ip-api.com
-                return fetch(`http://ip-api.com/json/${ipData.ip}?fields=status,message,country,regionName,city,isp`);
-            })
-            .then(r => r.json())
-            .then(locationData => {
-                if (locationData.status === 'success') {
-                document.getElementById('city').textContent = locationData.city || 'Unknown';
-                document.getElementById('region').textContent = locationData.regionName || 'Unknown';
-                document.getElementById('country').textContent = locationData.country || 'Unknown';
-                document.getElementById('isp-info').textContent = locationData.isp || 'Unknown';
-                } else {
-                throw new Error(locationData.message || 'Location detection failed');
-                }
-            })
-            .catch(error => {
-                console.error('Location detection error:', error);
-                document.getElementById('city').textContent = 'Error detecting';
-            });
-        }
-        
-        // 3. Connection Status
-        function updateConnectionStatus() {
-            const statusElement = document.getElementById('connection-status');
-            if (navigator.onLine) {
-            statusElement.textContent = 'Online';
-            statusElement.style.color = '#00ffcc';
-            } else {
-            statusElement.textContent = 'Offline';
-            statusElement.style.color = '#ff5555';
-            }
-        }
-        
-        // 4. System Info
-        function initSystemInfo() {
-            // Browser detection
-            const userAgent = navigator.userAgent;
-            let browserName;
-            
-            if (userAgent.includes('Firefox')) browserName = 'Firefox';
-            else if (userAgent.includes('Safari') && !userAgent.includes('Chrome')) browserName = 'Safari';
-            else if (userAgent.includes('Chrome')) browserName = 'Chrome';
-            else if (userAgent.includes('Edg')) browserName = 'Edge';
-            else browserName = 'Unknown';
-            
-            document.getElementById('browser-name').textContent = browserName;
-            document.getElementById('platform').textContent = navigator.platform;
-            document.getElementById('screen-res').textContent = `${window.screen.width}x${window.screen.height}`;
-        }
-        
-        // Initialize all features
-        initBattery();
-        initLocationAndNetwork();
-        initSystemInfo();
-        updateConnectionStatus();
-        
-        // Update connection status if it changes
-        window.addEventListener('online', updateConnectionStatus);
-        window.addEventListener('offline', updateConnectionStatus);
-        });
-    </script>
-    </body>
-    </html>
+</body>
+</html>
