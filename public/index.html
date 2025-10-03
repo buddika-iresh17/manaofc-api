@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thenux API Hub</title>
+<title>Manaofc API</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
 <style>
@@ -151,38 +151,28 @@ section h2 {
 
 <!-- NAVIGATION -->
 <nav>
-    <ul>
-        <li><a href="#home" class="active"><i class="fas fa-home"></i> <span>Home</span></a></li>
-        <li><a href="#anime-api"><i class="fas fa-film"></i> <span>Anime API</span></a></li>
-        <li><a href="#movie-api"><i class="fas fa-video"></i> <span>Movie API</span></a></li>
-        <li><a href="#yt-search-api"><i class="fas fa-search"></i> <span>Youtube Search</span></a></li>
-        <li><a href="#yt-download-api"><i class="fas fa-download"></i> <span>Youtube Download</span></a></li>
-    </ul>
-</nav>
-
+  
 <!-- HOME SECTION -->
 <section id="home">
-    <h2>Welcome to Thenux API Hub</h2>
-    <p style="text-align:center; color: rgb(200,200,200); font-size:1.1rem;">Explore Anime, Movie and YouTube APIs below</p>
-</section>
-
-<!-- ANIME API SECTION -->
-<section id="anime-api">
-    <h2>Anime API</h2>
+    <h2>Welcome to manaofc API</h2>
+    
+<!-- SEARCH API SECTION -->
+<section id="search-api">
+    <h2>Search API</h2>
     <div class="api-grid">
         <div class="api-card">
             <div class="api-header">
-                <i class="fas fa-film"></i>
-                <h3>Anime API</h3>
+                <i class="fas fa-search"></i>
+                <h3>Search API</h3>
                 <span class="status-badge active">Online</span>
             </div>
             <div class="api-body">
-                <p>Get random anime images and artwork</p>
+                <p>Get search the api</p>
                 <div class="endpoints">
                     <div class="endpoint">
                         <span class="method get">GET</span>
-                        <span class="url">/api/anime/random</span>
-                        <a href="/api/anime/random" target="_blank" class="try-btn">Try</a>
+                        <span class="url">/api/search?query=</span>
+                        <a href="/api/search?query=lelena" target="_blank" class="try-btn">Try</a>
                     </div>
                     <div class="endpoint">
                         <span class="method get">GET</span>
@@ -195,82 +185,29 @@ section h2 {
     </div>
 </section>
 
-<!-- MOVIE API SECTION -->
-<section id="movie-api">
-    <h2>Movie API</h2>
-    <div class="api-grid">
-        <div class="api-card">
-            <div class="api-header">
-                <i class="fas fa-video"></i>
-                <h3>Movie API</h3>
-                <span class="status-badge active">Online</span>
-            </div>
-            <div class="api-body">
-                <p>Search and download movie information</p>
-                <div class="endpoints">
-                    <div class="endpoint">
-                        <span class="method get">GET</span>
-                        <span class="url">/api/movie/search?q=</span>
-                        <a href="/api/movie/searchm?query=spider&limit=5" target="_blank" class="try-btn">Try</a>
-                    </div>
-                    <div class="endpoint">
-                        <span class="method get">GET</span>
-                        <span class="url">/api/movie/download</span>
-                        <a href="/api/movie/download?url=https://sinhalasub.lk/movies/deadpool-wolverine-2024-sinhala-subtitles/" target="_blank" class="try-btn">Try</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- YOUTUBE SEARCH API SECTION -->
-<section id="yt-search-api">
-    <h2>Youtube Search API</h2>
-    <div class="api-grid">
-        <div class="api-card">
-            <div class="api-header">
-                <i class="fas fa-search"></i>
-                <h3>Youtube Search API</h3>
-                <span class="status-badge active">Online</span>
-            </div>
-            <div class="api-body">
-                <p>Search YouTube videos by query</p>
-                <div class="endpoints">
-                    <div class="endpoint">
-                        <span class="method get">GET</span>
-                        <span class="url">/api/yt/search?q=</span>
-                        <a href="/api/yt/search?query=spider&limit=5" target="_blank" class="try-btn">Try</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- YOUTUBE DOWNLOAD API SECTION -->
-<section id="yt-download-api">
-    <h2>Youtube Download API</h2>
+<!-- DOWNLOAD API SECTION -->
+<section id="search-api">
+    <h2>Download API</h2>
     <div class="api-grid">
         <div class="api-card">
             <div class="api-header">
                 <i class="fas fa-download"></i>
-                <h3>Youtube Download API</h3>
+                <h3>Download API</h3>
                 <span class="status-badge active">Online</span>
             </div>
             <div class="api-body">
-                <p>Download YouTube video by URL</p>
+                <p>Get download the api</p>
                 <div class="endpoints">
                     <div class="endpoint">
                         <span class="method get">GET</span>
-                        <span class="url">/api/yt/download?url=</span>
-                        <a href="/api/yt/download?url=https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="try-btn">Try</a>
+                        <span class="url">/api/search?query=</span>
+                        <a href="/api/search?query=lelena" target="_blank" class="try-btn">Try</a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+                    <div class="endpoint">
+                        <span class="method get">GET</span>
+                        <span class="url">/api/anime/girls</span>
+                        <a href="/api/anime/girls" target="_blank" class="try-btn">Try</a>
+                    </div>
 
 </body>
 </html>
