@@ -12,8 +12,12 @@ router.get('/status', (req, res) => {
   });
 });
 
-// Anime API Routes
+// API Routes
 const ytRouter = require('./yt');
 router.use('/yt', ytRouter);
+
+const xnxxRouter = require('./xnxx');
+router.use('/xnxx', xnxxRouter);
+
 
 module.exports = router;
