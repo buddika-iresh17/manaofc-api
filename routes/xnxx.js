@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 
 router.get('/search', async (req, res) => {
     const searchQuery = req.params.query;
-    const searchUrl = `https://www.xnxx.tv/search/${encodeURIComponent(searchQuery)}`;
+    const searchUrl = `https://www.xnxx.com/search/${encodeURIComponent(searchQuery)}`;
 
     try {
         const response = await axios.get(searchUrl, {
@@ -19,7 +19,7 @@ router.get('/search', async (req, res) => {
 
         $('.mozaique .thumb').each((i, el) => {
             const title = $(el).find('p.title a').text().trim();
-            const url = 'https://www.xnxx.tv' + $(el).find('p.title a').attr('href');
+            const url = 'https://www.xnxx.com' + $(el).find('p.title a').attr('href');
             const thumb = $(el).find('img').attr('data-src') || $(el).find('img').attr('src');
 
             const duration = $(el).find('.duration').text().trim();
